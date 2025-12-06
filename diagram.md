@@ -1,15 +1,15 @@
 ```mermaid
-%% UML стильдегі Use Case диаграммасы (Mermaid арқылы)
+%% UML стильдегі Use Case диаграммасы (Mermaid)
 
-%% Акторлар адам тәрізді блокпен
-classDef actor fill:#f9f,stroke:#333,stroke-width:2px,font-weight:bold;
-classDef usecase fill:#bbf,stroke:#333,stroke-width:2px;
+%% Актерлер адам пішіні тәрізді көрсетіледі
+classDef actor fill:#f9f,stroke:#333,stroke-width:2px,font-weight:bold,shape:rectangle;
+classDef usecase fill:#bbf,stroke:#333,stroke-width:2px,shape:ellipse;
 
 graph TD
     %% Акторлар
-    Reader("Читатель")
-    Librarian("Библиотекарь")
-    Admin("Администратор")
+    Reader["Читатель"]
+    Librarian["Библиотекарь"]
+    Admin["Администратор"]
 
     class Reader,Librarian,Admin actor;
 
@@ -31,7 +31,7 @@ graph TD
 
     class UC_Register,UC_View,UC_Search,UC_Book,UC_Cancel,UC_History,UC_BookManage,UC_Add,UC_Delete,UC_Issue,UC_Active,UC_Branch,UC_Users,UC_Analytics usecase;
 
-    %% Связи
+    %% Связи актеров с Use Case
     Reader --> UC_Register
     Reader --> UC_View
     Reader --> UC_Search
@@ -47,15 +47,16 @@ graph TD
     Admin --> UC_Users
     Admin --> UC_Analytics
 
-    %% Include / Extend
+    %% Include / Extend связи
     UC_Search --> UC_View
     UC_Book --> UC_View
     UC_Cancel --> UC_Book
     UC_BookManage --> UC_Add
     UC_BookManage --> UC_Delete
 
-    %% Иерархия актеров (тек визуально)
+    %% Иерархия актеров (тек визуалды түрде)
     Librarian --- Reader
     Admin --- Librarian
+
 
 ```

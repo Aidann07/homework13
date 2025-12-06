@@ -1,3 +1,4 @@
+''' mermaid
 %% Диаграмма: Система управления сетью библиотек
 %% Mermaid Use Case approximation
 
@@ -50,3 +51,4 @@ Admin --> UC_Analytics
 %% Иерархия актеров (Mermaid напрямую не поддерживает, можно показать через комментарий)
 %% Librarian -> Читатель
 %% Admin -> Librarian
+'''

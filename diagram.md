@@ -2,37 +2,34 @@
 %% Use Case диаграммасы
 %% left to right бағытында
 %% Актерлер және олардың байланыстары
+%% Mermaid синтаксисі үшін actor және usecase атаулар қарапайым түрде беріледі
 
 %% Актерлер
 actor Reader as "Читатель"
 actor Librarian as "Библиотекарь"
 actor Admin as "Администратор"
 
-%% Мұрагерлік қатынасы
-Librarian --> Reader
-Admin --> Librarian
+%% Актерлер арасындағы мұрагерлік қатынас
+Librarian --|> Reader
+Admin --|> Librarian
 
-%% Use Case блоктары
-%% Система управления сетью библиотек
-%% Reader Use Cases
-usecase UC_Register as "Регистрация пользователя"
-usecase UC_View as "Просмотр книг"
-usecase UC_Search as "Поиск книг"
-usecase UC_Book as "Бронирование книги"
-usecase UC_Cancel as "Отмена бронирования"
-usecase UC_History as "История бронирований"
+%% Use Case-тер
+UC_Register["Регистрация пользователя"]
+UC_View["Просмотр книг"]
+UC_Search["Поиск книг"]
+UC_Book["Бронирование книги"]
+UC_Cancel["Отмена бронирования"]
+UC_History["История бронирований"]
 
-%% Librarian Use Cases
-usecase UC_BookManage as "Управление книгами"
-usecase UC_Add as "Добавление книги"
-usecase UC_Delete as "Удаление книги"
-usecase UC_Issue as "Учет выдачи/возврата"
-usecase UC_Active as "Просмотр активных бронирований"
+UC_BookManage["Управление книгами"]
+UC_Add["Добавление книги"]
+UC_Delete["Удаление книги"]
+UC_Issue["Учет выдачи/возврата"]
+UC_Active["Просмотр активных бронирований"]
 
-%% Admin Use Cases
-usecase UC_Branch as "Управление филиалами"
-usecase UC_Users as "Управление учетными записями"
-usecase UC_Analytics as "Просмотр аналитики"
+UC_Branch["Управление филиалами"]
+UC_Users["Управление учетными записями"]
+UC_Analytics["Просмотр аналитики"]
 
 %% Актерлермен байланыс
 Reader --> UC_Register
@@ -57,5 +54,6 @@ UC_Cancel -.-> UC_Book
 
 UC_BookManage --> UC_Add
 UC_BookManage --> UC_Delete
+
 
 ```

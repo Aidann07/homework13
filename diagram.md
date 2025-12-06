@@ -1,27 +1,37 @@
 ```mermaid
-flowchart TD
+%% UML стильдегі Use Case диаграммасы (Mermaid арқылы)
+
+%% Акторлар адам тәрізді блокпен
+classDef actor fill:#f9f,stroke:#333,stroke-width:2px,font-weight:bold;
+classDef usecase fill:#bbf,stroke:#333,stroke-width:2px;
+
+graph TD
     %% Акторлар
-    Reader[Читатель]
-    Librarian[Библиотекарь]
-    Admin[Администратор]
+    Reader("Читатель")
+    Librarian("Библиотекарь")
+    Admin("Администратор")
+
+    class Reader,Librarian,Admin actor;
 
     %% Use Cases
-    UC_Register["Регистрация пользователя"]
-    UC_View["Просмотр книг"]
-    UC_Search["Поиск книг"]
-    UC_Book["Бронирование книги"]
-    UC_Cancel["Отмена бронирования"]
-    UC_History["История бронирований"]
-    UC_BookManage["Управление книгами"]
-    UC_Add["Добавление книги"]
-    UC_Delete["Удаление книги"]
-    UC_Issue["Учет выдачи/возврата"]
-    UC_Active["Просмотр активных бронирований"]
-    UC_Branch["Управление филиалами"]
-    UC_Users["Управление учетными записями"]
-    UC_Analytics["Просмотр аналитики"]
+    UC_Register("Регистрация пользователя")
+    UC_View("Просмотр книг")
+    UC_Search("Поиск книг")
+    UC_Book("Бронирование книги")
+    UC_Cancel("Отмена бронирования")
+    UC_History("История бронирований")
+    UC_BookManage("Управление книгами")
+    UC_Add("Добавление книги")
+    UC_Delete("Удаление книги")
+    UC_Issue("Учет выдачи/возврата")
+    UC_Active("Просмотр активных бронирований")
+    UC_Branch("Управление филиалами")
+    UC_Users("Управление учетными записями")
+    UC_Analytics("Просмотр аналитики")
 
-    %% Связи акторов с Use Case
+    class UC_Register,UC_View,UC_Search,UC_Book,UC_Cancel,UC_History,UC_BookManage,UC_Add,UC_Delete,UC_Issue,UC_Active,UC_Branch,UC_Users,UC_Analytics usecase;
+
+    %% Связи
     Reader --> UC_Register
     Reader --> UC_View
     Reader --> UC_Search
@@ -37,15 +47,14 @@ flowchart TD
     Admin --> UC_Users
     Admin --> UC_Analytics
 
-    %% Включения / расширения
+    %% Include / Extend
     UC_Search --> UC_View
     UC_Book --> UC_View
     UC_Cancel --> UC_Book
-
     UC_BookManage --> UC_Add
     UC_BookManage --> UC_Delete
 
-    %% Иерархия ролей (только для визуального представления)
+    %% Иерархия актеров (тек визуально)
     Librarian --- Reader
     Admin --- Librarian
 

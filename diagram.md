@@ -1,60 +1,61 @@
 ```mermaid
-graph TD
-  direction LR
+%% Use Case диаграммасы
+%% left to right бағытында
+%% Актерлер және олардың байланыстары
 
-  %% Актерлерді анықтау
-  actor[Читатель] as Reader
-  actor[Библиотекарь] as Librarian
-  actor[Администратор] as Admin
+%% Актерлер
+actor Reader as "Читатель"
+actor Librarian as "Библиотекарь"
+actor Admin as "Администратор"
 
-  %% Актерлер арасындағы иерархия (Mermaid-те : : generalization сияқты қатынас әдісі қолданылады)
-  Librarian --|> Reader
-  Admin --|> Librarian
+%% Мұрагерлік қатынасы
+Librarian --> Reader
+Admin --> Librarian
 
-  %% Қолдану жағдайларын анықтау
-  subgraph Система управления сетью библиотек
-    (Регистрация пользователя) as UC_Register
-    (Просмотр книг) as UC_View
-    (Поиск книг) as UC_Search
-    (Бронирование книги) as UC_Book
-    (Отмена бронирования) as UC_Cancel
-    (История бронирований) as UC_History
+%% Use Case блоктары
+%% Система управления сетью библиотек
+%% Reader Use Cases
+usecase UC_Register as "Регистрация пользователя"
+usecase UC_View as "Просмотр книг"
+usecase UC_Search as "Поиск книг"
+usecase UC_Book as "Бронирование книги"
+usecase UC_Cancel as "Отмена бронирования"
+usecase UC_History as "История бронирований"
 
-    (Управление книгами) as UC_BookManage
-    (Добавление книги) as UC_Add
-    (Удаление книги) as UC_Delete
-    (Учет выдачи/возврата) as UC_Issue
-    (Просмотр активных бронирований) as UC_Active
+%% Librarian Use Cases
+usecase UC_BookManage as "Управление книгами"
+usecase UC_Add as "Добавление книги"
+usecase UC_Delete as "Удаление книги"
+usecase UC_Issue as "Учет выдачи/возврата"
+usecase UC_Active as "Просмотр активных бронирований"
 
-    (Управление филиалами) as UC_Branch
-    (Управление учетными записями) as UC_Users
-    (Просмотр аналитики) as UC_Analytics
-  end
+%% Admin Use Cases
+usecase UC_Branch as "Управление филиалами"
+usecase UC_Users as "Управление учетными записями"
+usecase UC_Analytics as "Просмотр аналитики"
 
-  %% Қатынастар
-  %% Оқырман
-  Reader --> UC_Register
-  Reader --> UC_View
-  Reader --> UC_Search
-  Reader --> UC_Book
-  Reader --> UC_Cancel
-  Reader --> UC_History
+%% Актерлермен байланыс
+Reader --> UC_Register
+Reader --> UC_View
+Reader --> UC_Search
+Reader --> UC_Book
+Reader --> UC_Cancel
+Reader --> UC_History
 
-  %% Кітапханашы
-  Librarian --> UC_BookManage
-  Librarian --> UC_Issue
-  Librarian --> UC_Active
+Librarian --> UC_BookManage
+Librarian --> UC_Issue
+Librarian --> UC_Active
 
-  %% Әкімші
-  Admin --> UC_Branch
-  Admin --> UC_Users
-  Admin --> UC_Analytics
+Admin --> UC_Branch
+Admin --> UC_Users
+Admin --> UC_Analytics
 
-  %% Include/Extend
-  UC_Search ..> UC_View : <<include>>
-  UC_Book ..> UC_View : <<include>>
-  UC_Cancel ..> UC_Book : <<extend>>
+%% Use Case байланыстары
+UC_Search --> UC_View
+UC_Book --> UC_View
+UC_Cancel -.-> UC_Book
 
-  UC_BookManage ..> UC_Add : <<include>>
-  UC_BookManage ..> UC_Delete : <<include>>
+UC_BookManage --> UC_Add
+UC_BookManage --> UC_Delete
+
 ```

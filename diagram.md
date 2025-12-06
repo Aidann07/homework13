@@ -1,15 +1,14 @@
 ```mermaid
-%% Use Case диаграммасы
+%% Use Case диаграммасы (Mermaid толық жұмыс жасайтын формат)
 %% left to right бағытында
-%% Актерлер және олардың байланыстары
-%% Mermaid синтаксисі үшін actor және usecase атаулар қарапайым түрде беріледі
+%% Актерлер және Use Case-тер
 
 %% Актерлер
 actor Reader as "Читатель"
 actor Librarian as "Библиотекарь"
 actor Admin as "Администратор"
 
-%% Актерлер арасындағы мұрагерлік қатынас
+%% Актерлер арасындағы мұрагерлік
 Librarian --|> Reader
 Admin --|> Librarian
 
@@ -31,7 +30,7 @@ UC_Branch["Управление филиалами"]
 UC_Users["Управление учетными записями"]
 UC_Analytics["Просмотр аналитики"]
 
-%% Актерлермен байланыс
+%% Актерлер мен Use Case байланыстары
 Reader --> UC_Register
 Reader --> UC_View
 Reader --> UC_Search
@@ -47,7 +46,7 @@ Admin --> UC_Branch
 Admin --> UC_Users
 Admin --> UC_Analytics
 
-%% Use Case байланыстары
+%% Use Case-тер арасындағы қатынастар
 UC_Search --> UC_View
 UC_Book --> UC_View
 UC_Cancel -.-> UC_Book
